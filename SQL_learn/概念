@@ -1,1 +1,32 @@
+语法结构：select--from--where--group by--having--order by--limit
+运行顺序：from--where--group by--having--order by--limit--select
+          来源 筛查 分组聚合 ———— 排序  限制 输出
 
+字段名 表名 where表达式
+1 去重 select 之后加 distinct 
+    多个字段只会去重字符段组中的重复项
+    
+2 where表达式类似于筛选器
+  in 指定条件范围内的数据 in (xxx,xxx,xxx)
+  is null 查询空值<null>， 空值不是0，也不是null字符串
+  查询文本 ' '括起来
+  通配符
+    % 任意字符任意次数
+    _ 占位符
+   between and 
+    不去边界值是(!=)
+    
+ 3 order by
+    order by 字段名 in ('','') 会将内容的值记为0或1
+      视情况而定 如果asc是置于
+      
+      + 【整段语句的最后一行】limit 起到限制作用
+          limit x【偏移量】, n 从x+1行开始返回n行
+          例 从4到7 4,5,6,7 所以是 limit3,4
+          
+ 4 group by
+  先分区后 分组【去重】
+    聚合算法 分区中聚合成一行数据
+    
+5 having
+  在group by之后，只能用聚合方法和group by提到的字段
