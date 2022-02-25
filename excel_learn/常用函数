@@ -12,3 +12,50 @@ sumif（range，criteria，【sum_range】）
 5 F4 快速锁定选中
 
 6 hint：在Excel表格中默认数字1为1900-1-1日 方便时间类的计算
+
+7 sumifs （sum_range，criteria1，criteria2）
+            （需要求得值所在的组，筛选值1的组，筛选值1，）
+            要求的list，筛选值1的list，筛选值的value，筛选值1的list，筛选值的value。。。
+
+8 环比
+    上一个相邻单位
+    日   2022年2月25日，
+            环比 2022年2月25日数据/2022年2月24日数据 - 1 
+            周同比 2022年2月25日数据/2022年2月18日数据 -1 
+            月同比 2022年2月25日数据/2022年1月25日数据 -1
+    月   2022年2月
+            环比 2022年2月数据/2022年1月数据 -1
+            同比 2022年2月数据/2021年2月数据 -1
+    年
+9 直接使用 DATE(YEAR(B30),MONTH(B30)-1,DAY(B30)) 
+    可以顺利找到跨年数据但是 7/31如果month-1 得到的是 7/1的数据
+
+10 单月月初可以表示为 DATE(YEAR(B30),MONTH(B30),1)
+    月底 DATE(YEAR(B30),MONTH(B30)+1,1)-1
+    
+11 subtotal 可以根据之前表格的改变而改变数据【更加灵活】
+
+14 vlookup （lookup——value，table array， column index， 【range_lookup】）
+    （查询值，查询列和结果列组合【为了能一一对应上】，结果列在组合列中是第几列，1/TRUE 模糊查找;0/FALSE 精确查找）
+        只会返回找到的第一个值
+        *保证数据不会偏移要用锁定符锁定组合列表
+    
+15 通配符
+    *不定数量字符
+    ？代替一个字符
+    使用的时候 &“”
+    
+16 match （lookup_value, lookup_array, [match_type]）
+    (查找值，查找列， -1 greater than；0 精确匹配； less than)
+    不支持合并单元格的数据
+    
+17 index (array,row_num,colum_num)
+    array 锁全表
+    row   锁列【字母】
+    colum 锁行【数字】
+    
+    
+    
+
+
+
