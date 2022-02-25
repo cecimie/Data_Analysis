@@ -1,0 +1,52 @@
+例：有3个表S，C，SC：
+
+S（SNO，SNAME）代表（学号，姓名）
+
+C（CNO，CNAME，CTEACHER）代表（课号，课名，教师）
+
+SC（SNO，CNO，SCGRADE）代表（学号，课号，成绩）
+
+问题：
+
+1，找出没选过“黎明”老师的所有学生姓名。
+
+select SNAME
+from S
+where SNO not in (select SNO
+from sc
+where CNO not in (select CNO
+from c
+where CTEACHER = '黎明')
+)
+
+2，列出2门以上（含2门）不及格学生姓名及平均成绩。
+
+select  S.SNAME, ave(SCGRADE)
+from (select S.SNO，S.SNAME
+from (select SNO, count(SNO) as FCN from sc where SCGRADE = '不及格' group by SNO) 
+a join S a.SNO = S.SNO where a.FCN >= 2) 
+b join SC where b.SNO = S.SNO
+
+
+
+select s.sname, avg_grade from s
+join
+(select sno from sc where scgrade < 60 group by sno having count(*) >= 2) t1
+on s.sno = t1.sno
+join
+(select sno, avg(scgrade) as avg_grade from sc group by sno ) t2
+on s.sno = t2.sno;
+
+3，既学过1号课程又学过2号课所有学生的姓名。
+S（SNO，SNAME）代表（学号，姓名）
+
+C（CNO，CNAME，CTEACHER）代表（课号，课名，教师）
+
+SC（SNO，CNO，SCGRADE）代表（学号，课号，成绩）
+
+Select SNAME 
+from SC
+where SNO in
+  ((select SNO 
+    from SC 
+    where CNO = 1 and CNO = 2))
