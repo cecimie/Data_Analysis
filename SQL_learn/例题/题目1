@@ -1,1 +1,5 @@
 
+查询每场比赛，每个球队的得分情况，按照以下格式显示
+mdate         team1   score1    team2   score2
+1-July-2012
+最后按照举办时间（mdate）、赛事编号（matchid）、队伍1（team1）和队伍2（team2）排序
